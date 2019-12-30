@@ -4,3 +4,6 @@
 [submodule "pytorch-operator"]
 	path = pytorch-operator
 	url = https://github.com/kubeflow/pytorch-operator.git
+[submodule "intro-to-ml-with-kubeflow-examples"]
+	path = intro-to-ml-with-kubeflow-examples
+	url = https://github.com/YADET/intro-to-ml-with-kubeflow-examples.git
