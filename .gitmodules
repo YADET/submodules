@@ -10,3 +10,6 @@
 [submodule "stores-rest-api"]
 	path = stores-rest-api
 	url = https://github.com/schoolofcode-me/stores-rest-api.git
+[submodule "model-analysis"]
+	path = model-analysis
+	url = https://github.com/tensorflow/model-analysis.git
