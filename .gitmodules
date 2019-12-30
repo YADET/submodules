@@ -7,3 +7,6 @@
 [submodule "intro-to-ml-with-kubeflow-examples"]
 	path = intro-to-ml-with-kubeflow-examples
 	url = https://github.com/YADET/intro-to-ml-with-kubeflow-examples.git
+[submodule "stores-rest-api"]
+	path = stores-rest-api
+	url = https://github.com/schoolofcode-me/stores-rest-api.git
