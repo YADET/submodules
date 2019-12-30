@@ -1,3 +1,6 @@
 [submodule "examples"]
 	path = examples
 	url = https://github.com/kubeflow/examples.git
+[submodule "pytorch-operator"]
+	path = pytorch-operator
+	url = https://github.com/kubeflow/pytorch-operator.git
