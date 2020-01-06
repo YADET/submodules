@@ -16,3 +16,6 @@
 [submodule "Spark-Scala-Maven-Example"]
 	path = Spark-Scala-Maven-Example
 	url = https://github.com/martinprobson/Spark-Scala-Maven-Example.git
+[submodule "flink-training-exercises"]
+	path = flink-training-exercises
+	url = https://github.com/ververica/flink-training-exercises.git
