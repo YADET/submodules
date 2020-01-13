@@ -19,3 +19,6 @@
 [submodule "flink-training-exercises"]
 	path = flink-training-exercises
 	url = https://github.com/ververica/flink-training-exercises.git
+[submodule "uwsgi-nginx-flask-docker"]
+	path = uwsgi-nginx-flask-docker
+	url = https://github.com/tiangolo/uwsgi-nginx-flask-docker.git
