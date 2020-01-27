@@ -28,3 +28,6 @@
 [submodule "training-data-analyst"]
 	path = training-data-analyst
 	url = https://github.com/GoogleCloudPlatform/training-data-analyst
+[submodule "processing-logs-using-dataflow"]
+	path = processing-logs-using-dataflow
+	url = https://github.com/GoogleCloudPlatform/processing-logs-using-dataflow
