@@ -25,3 +25,6 @@
 [submodule "terraform-google-cloud-examples"]
 	path = terraform-google-cloud-examples
 	url = https://github.com/alfonsof/terraform-google-cloud-examples.git
+[submodule "training-data-analyst"]
+	path = training-data-analyst
+	url = https://github.com/GoogleCloudPlatform/training-data-analyst
