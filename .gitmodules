@@ -31,3 +31,6 @@
 [submodule "processing-logs-using-dataflow"]
 	path = processing-logs-using-dataflow
 	url = https://github.com/GoogleCloudPlatform/processing-logs-using-dataflow
+[submodule "flask-microservice"]
+	path = flask-microservice
+	url = https://github.com/IBM/flask-microservice
