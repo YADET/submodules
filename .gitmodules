@@ -43,3 +43,6 @@
 [submodule "ea-async"]
 	path = ea-async
 	url = https://github.com/electronicarts/ea-async.git
+[submodule "tf-fraud-detection-using-machine-learning"]
+	path = tf-fraud-detection-using-machine-learning
+	url = https://github.com/qtangs/tf-fraud-detection-using-machine-learning.git

@@ -1,0 +1,149 @@
+image: node:10
+
+stages:
+  - build
+  - test
+  - review
+  - deploy stage
+  - deploy production
+  - production test
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+variables:
+  STAGING_DOM: myexample-st.surge.sh
+  PRODUCTION_DOM: myexample-st.surge.sh
+
+buil website:
+  stage: build
+  only:
+    - merge-requests
+    - master
+  script:
+    - echo $Hi
+    - nmp install
+    - nmp install -g gatsby-cli
+    - gatsby build
+    - sed -i "s/%%VERSION%%/$CI_COMMIT_REF_SLUG/" ./public/index.html
+  artifacts:
+    paths:
+      - ./public
+
+test artifact:
+  image: alpine
+  stage: test
+  script:
+    - grep -q "Gatsby" ./public/index.html
+
+test website:
+  stage: test
+  script:
+    - nmp install
+    - nmp install -g gatsby-cli
+    - gatsby server &
+    - sleep 3
+    - curl "http://localhost:9000" | tac | tac | grep -q "Gatsby"
+
+
+
+deploy review:
+  stage: review
+  only:
+    - merge-requests
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: http://instazone-$CI_ENVIRONMET_SLUG.surge.sh
+    on_stop: stop review
+  script:
+    - nmp install --global surge
+    - surge --project ./public --domain instazone-$CI_ENVIRONMET_SLUG.surge.sh
+
+stop review:
+  stage: deploy review
+  only:
+    - merge-requests
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - nmp install --global surge
+    - surge teardown instazone-$CI_ENVIRONMET_SLUG.surge.sh
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+
+deploy staging:
+  stage: deploy stage
+  environment:
+    name: staging
+    url: http://$STAGING_DOM
+  only: 
+    - master
+  script:
+    - nmp install --global surge
+    - surge --project ./public --domain $STAGING_DOM
+
+deploy_template: &deploy
+  only:
+    - master
+  script:
+    - nmp install --global surge
+    - surge --project ./public --domain $PRODUCTION_DOM
+
+deploy production:
+  stage: deploy production
+  only: 
+    - master
+  environment:
+    name: production
+    url: $PRODUCTION_DOM
+  when: manual
+  allow_failure: false
+  before_script:
+    - echo "hi"
+
+####### with template and anchor ####
+
+
+deploy_template: &deploy
+  only:
+    - master
+  script:
+    - nmp install --global surge
+    - surge --project ./public --domain $PRODUCTION_DOM
+  environment:
+    url: http://$DOMAIN
+
+deploy staging:
+  stage: deploy stage
+  <<: *deploy
+  environment:
+    name: staging
+  variables:
+    DOMAIN: $STAGING_DOM
+
+deploy production:
+  stage: deploy production
+  <<: *deploy
+  environment:
+    name: staging
+  variables:
+    DOMAIN: $PRODUCTION_DOM
+  when: manual
+  allow_failure: false
+  before_script:
+    - echo "hi"
+
+
+
+production test:
+  image: alpine
+  only: 
+    - master
+  stage: production test
+  script:
+    - apk add --on-cache curl
+    - curl -s "https://$PRODUCTION_DOM" | grep -q "Hi people"
