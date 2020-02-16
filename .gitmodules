@@ -46,3 +46,6 @@
 [submodule "tf-fraud-detection-using-machine-learning"]
 	path = tf-fraud-detection-using-machine-learning
 	url = https://github.com/qtangs/tf-fraud-detection-using-machine-learning.git
+[submodule "spark-hbase-connector"]
+	path = spark-hbase-connector
+	url = https://github.com/nerdammer/spark-hbase-connector.git
