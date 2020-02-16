@@ -34,3 +34,12 @@
 [submodule "flask-microservice"]
 	path = flask-microservice
 	url = https://github.com/IBM/flask-microservice
+[submodule "Java"]
+	path = Java
+	url = https://github.com/TheAlgorithms/Java.git
+[submodule "java-algorithms-implementation"]
+	path = java-algorithms-implementation
+	url = https://github.com/phishman3579/java-algorithms-implementation.git
+[submodule "ea-async"]
+	path = ea-async
+	url = https://github.com/electronicarts/ea-async.git
